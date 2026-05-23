@@ -1,68 +1,173 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Mobile App Pro</title>
+<title>Smart App Pro</title>
 
 <link rel="stylesheet" href="style.css">
 
+<!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#0b1220">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<!-- MAP -->
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="top">
-<div id="cityName">📍 Detecting...</div>
-<button onclick="toggleMap()">🗺</button>
-<button onclick="useGPS()">📍</button>
+<div class="desktop-layout" id="app">
+
+<!-- PAGE 1 -->
+<section class="page">
+
+<div class="block topbar">
+
+<div id="cityName">
+📍 Detecting location...
+</div>
+
+<div class="buttons">
+
+<button onclick="useGPS()">
+📍 GPS
+</button>
+
+<button onclick="toggleMap()">
+🗺 Map
+</button>
+
+</div>
+
+</div>
+
+<div class="block clock-block">
+
+<div id="time">
+00:00:00
+</div>
+
+<div id="date">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+<!-- PAGE 2 WEATHER -->
+<section class="page">
+
+<div class="block weather">
+
+<div id="icon">
+☀️
+</div>
+
+<div id="temp">
+--°C
+</div>
+
+<div id="desc">
+Loading weather...
+</div>
+
+</div>
+
+<div id="weatherAnimation"></div>
+
+</section>
+
+<!-- PAGE 3 TIMER -->
+<section class="page">
+
+<div class="block">
+
+<h2>Timer</h2>
+
+<input
+id="minutes"
+type="number"
+value="20"
+min="1"
+/>
+
+<button onclick="startTimer()">
+Start Timer
+</button>
+
+<div id="timer">
+20:00
+</div>
+
+</div>
+
+</section>
+
+<!-- PAGE 4 ALARM -->
+<section class="page">
+
+<div class="block">
+
+<h2>Alarm</h2>
+
+<input
+type="time"
+id="alarm"
+/>
+
+<button onclick="setAlarm()">
+Set Alarm
+</button>
+
+<p id="alarmStatus">
+Alarm Off
+</p>
+
+</div>
+
+</section>
+
 </div>
 
 <!-- MAP -->
-<div id="mapBox">
-<input id="cityInput" placeholder="Search city">
-<button onclick="searchCity()">Search</button>
+<div id="mapContainer">
+
+<div class="map-top">
+
+<input
+id="cityInput"
+placeholder="Search city..."
+/>
+
+<button onclick="searchCity()">
+Search
+</button>
+
+<button onclick="closeMap()">
+Close
+</button>
+
+</div>
+
 <div id="map"></div>
+
 </div>
 
-<!-- CLOCK -->
-<div class="clock">
-<div id="time">00:00:00</div>
-<div id="date"></div>
-</div>
+<!-- AUDIO -->
+<audio
+id="sound"
+src="alarm.mp3">
+</audio>
 
-<!-- WEATHER -->
-<div class="weather">
-<div id="icon">☀️</div>
-<div id="temp">--°C</div>
-<div id="desc">Loading...</div>
-</div>
-
-<!-- TIMER -->
-<div class="block">
-<h2>Timer</h2>
-<input id="minutes" type="number" value="20">
-<button onclick="startTimer()">Start</button>
-<div id="timer">20:00</div>
-</div>
-
-<!-- ALARM -->
-<div class="block">
-<h2>Alarm</h2>
-<input type="time" id="alarm">
-<button onclick="setAlarm()">Set</button>
-<p id="alarmStatus">Off</p>
-</div>
-
-<audio id="sound"
-src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
-
+<!-- LEAFLET -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>
