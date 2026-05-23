@@ -2,10 +2,15 @@
 "name":"Smart App Pro",
 "short_name":"SmartApp",
 "start_url":"index.html",
-"display":"fullscreen",
+"display":"standalone",
 "background_color":"#0b1220",
 "theme_color":"#0b1220",
+"orientation":"portrait",
 "icons":[
-{"src":"icon.png","sizes":"192x192","type":"image/png"}
+{
+"src":"icon.png",
+"sizes":"192x192",
+"type":"image/png"
+}
 ]
 }
